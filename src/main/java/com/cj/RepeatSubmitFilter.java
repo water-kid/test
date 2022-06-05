@@ -19,8 +19,12 @@ public class RepeatSubmitFilter implements Filter {
         if(StringUtils.startsWithIgnoreCase(request.getContentType(),"application/json")){
             RepeatSubmitRequestWrapper requestWrapper = new RepeatSubmitRequestWrapper(request, response);
             filterChain.doFilter(requestWrapper,response);
+            // 不写return  会继续往下走
+            return;
         }
 
         filterChain.doFilter(servletRequest,servletResponse);
     }
+
+
 }
